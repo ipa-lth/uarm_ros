@@ -14,7 +14,7 @@
     <link name="${prefix}base_link">
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/base.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/base.dae"/>
       </geometry>
     </visual>
     </link>
@@ -30,7 +30,7 @@
     <link name="${prefix}link_0"> 
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/link0.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/link0.dae"/>
       </geometry>
     </visual>  
     </link>
@@ -46,7 +46,7 @@
     <link name="${prefix}link_1">
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/link1.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/link1.dae"/>
       </geometry>
     </visual>    
     </link>
@@ -62,7 +62,7 @@
     <link name="${prefix}link_2">
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/link2.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/link2.dae"/>
       </geometry>
     </visual>  
     </link>
@@ -91,7 +91,7 @@
     <link name="${prefix}link_3">
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/link3.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/link3.dae"/>
       </geometry>
     </visual>   
     </link>
@@ -107,7 +107,7 @@
     <link name="${prefix}link_4"> 
     <visual>
       <geometry>
-        <mesh filename="package://ipa325_robot_descriptions/meshes/uarm/tool.dae"/>
+        <mesh filename="package://uarm_description/meshes/arm/tool.dae"/>
       </geometry>
     </visual>     
     </link>
