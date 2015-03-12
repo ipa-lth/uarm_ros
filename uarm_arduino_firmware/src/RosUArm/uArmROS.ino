@@ -27,7 +27,7 @@ void gripperCallback(const std_msgs::Bool &command) {
 
 ros::NodeHandle nh;
 float positions[5] = {0.0};
-//char *names[5] = {"ROT", "L", "R", "HAND_ROT", "HAND"};
+char *joint_names[5] = {"joint_0", "joint_1", "joint_2", "joint_3", "joint_4"};
 
 ros::Subscriber<std_msgs::Bool> gripper_sub("/uarm/gripper", gripperCallback);
 ros::Subscriber<uarm::Joints> joint_sub("/uarm/joint_commands", jointCallback);
@@ -47,8 +47,8 @@ void setup()
 
   joint_state_msg.position_length = 5;
   joint_state_msg.position = positions;
-  //  joint_state_msg.name_length = 5;
-  //  joint_state_msg.name = names; // these causes freeze
+  joint_state_msg.name = joint_names; // these causes freeze ?
+
 
   nh.initNode();
   nh.advertise(joint_state_pub);
