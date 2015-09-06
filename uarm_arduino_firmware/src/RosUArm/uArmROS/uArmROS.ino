@@ -4,7 +4,7 @@
 #include <std_msgs/Bool.h>
 #include <uarm/Joints.h>
 
-#include <Servo.h>
+//#include <Servo.h>
 #include <EEPROM.h>
 #include <UF_uArm.h>
 
