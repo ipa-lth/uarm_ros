@@ -136,8 +136,9 @@ void loop() {
     _servos[2].writeMicroseconds(_servos[2].readMicroseconds() + _speed[2]);              // tell servo to go to position in variable 'pos'
     _servos[3].writeMicroseconds(_servos[3].readMicroseconds() + _speed[3]);              // tell servo to go to position in variable 'pos'
     
+    String init = "%";
     String sep = ",";
-    Serial.println(angles[0] + sep + angles[1] + sep + angles[2] + sep + angles[3]);
+    Serial.println(init + angles[0] + sep + angles[1] + sep + angles[2] + sep + angles[3]);
     //Serial.println(_speed[0] + sep + _speed[1] + sep + _speed[2] + sep + _speed[3]);
-    delay(1);
+    //delay(1);
 }
