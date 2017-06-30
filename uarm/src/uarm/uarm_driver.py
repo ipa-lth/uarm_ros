@@ -42,7 +42,7 @@ class UArm(object):
         ##  parsing received line into Joinstate
         #print line
         if line.startswith('%'):
-            print line[1:].split(',')
+            #print line[1:].split(',')
             data = np.array(line[1:].split(','), dtype=float)
             
             js.position = data            
@@ -58,11 +58,11 @@ class UArm(object):
         else:
             return
 
-        rospy.loginfo("Handling command: {}".format(qd_d) )
+        rospy.logdebug("Handling command: {}".format(qd_d) )
 
-        message = '%f %f %f %f\n'.format(0,0,0,1)
+        message = '{},{},{},{}\n'.format(qd_d[0], qd_d[1], qd_d[2], qd_d[3])
         rospy.logdebug("Sending speed command message: " + message)
-        #self._SerialDataGateway.Write(message)
+        self._SerialDataGateway.Write(message)
 
     def Start(self):
         rospy.logdebug("Starting")

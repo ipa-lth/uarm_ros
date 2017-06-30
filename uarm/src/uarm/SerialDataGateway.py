@@ -59,7 +59,7 @@ class SerialDataGateway(object):
 
 	def Write(self, data):
 		info = "Writing to serial port: %s" %data
-		rospy.loginfo(info)
+		rospy.logdebug(info)
 		self._Serial.write(data)
 
 	if __name__ == '__main__':
