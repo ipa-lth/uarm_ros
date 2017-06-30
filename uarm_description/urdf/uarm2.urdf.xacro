@@ -20,7 +20,7 @@
     </link>
 
     <joint name="${prefix}joint_0" type="revolute">
-    <origin xyz="0 0 0.03" rpy="0 0 0"/> 
+    <origin xyz="0 0 0.03" rpy="0 0 -${M_PI/3}"/> 
       <parent link="${prefix}base_link"/>
       <child link="${prefix}link_0"/>
       <axis xyz="0 0 1"/>
@@ -36,10 +36,10 @@
     </link>
 
     <joint name="${prefix}joint_1" type="revolute">
-    <origin xyz="0.02 0 0.07" rpy="${-M_PI/2} 0 0"/> 
+    <origin xyz="0.02 0 0.07" rpy="${-M_PI/2} ${M_PI/10} 0"/> 
       <parent link="${prefix}link_0"/>
       <child link="${prefix}link_1"/>
-      <axis xyz="0 0 1"/>
+      <axis xyz="0 0 -1"/>
       <limit effort="200" velocity="1.9634" lower="-${M_PI}" upper="${M_PI}"/>
     </joint>
 
@@ -52,12 +52,26 @@
     </link>
 
     <joint name="${prefix}joint_2" type="revolute">
-    <origin xyz="0.15 0 0" rpy="0 0 0"/> 
+    <origin xyz="0.15 0 0" rpy="0 0 ${M_PI/2}"/> 
       <parent link="${prefix}link_1"/>
-      <child link="${prefix}link_2"/>
+      <child link="${prefix}virtual_link_x"/>
       <axis xyz="0 0 1"/>
       <limit effort="200" velocity="1.9634" lower="-${M_PI}" upper="${M_PI}"/>
     </joint>
+
+    <link name="${prefix}virtual_link_x">    
+    </link>
+
+    <joint name="${prefix}mimic_joint_x" type="revolute">
+    <origin xyz="0 0 0" rpy="0 0 ${-5*M_PI/8}"/> 
+      <parent link="${prefix}virtual_link_x"/>
+      <child link="${prefix}link_2"/>
+      <mimic joint="${prefix}joint_1" multiplier="-1"/>
+      <axis xyz="0 0 -1"/>
+      <limit effort="200" velocity="1.9634" lower="-${M_PI}" upper="${M_PI}"/>
+    </joint>
+
+
 
     <link name="${prefix}link_2">
     <visual>
@@ -68,11 +82,11 @@
     </link>
 
     <joint name="${prefix}mimic_joint_1" type="revolute">
-    <origin xyz="0.16 0 0" rpy="0 0 0"/> 
+    <origin xyz="0.16 0 0" rpy="0 0 ${M_PI/2}"/> 
       <parent link="${prefix}link_2"/>
       <child link="${prefix}virtual_link_2"/>
-      <mimic joint="${prefix}joint_1" multiplier="-1"/>
-      <axis xyz="0 0 1"/>
+      <mimic joint="${prefix}joint_1" multiplier="0"/>
+      <axis xyz="0 0 -1"/>
       <limit effort="200" velocity="1.9634" lower="-${M_PI}" upper="${M_PI}"/>
     </joint>
 
@@ -80,7 +94,7 @@
     </link>
 
     <joint name="${prefix}mimic_joint_2" type="revolute">
-    <origin xyz="0 0 0" rpy="0 0 0"/> 
+    <origin xyz="0 0 0" rpy="0 0 ${-7*M_PI/15}"/> 
       <parent link="${prefix}virtual_link_2"/>
       <child link="${prefix}link_3"/>
       <mimic joint="${prefix}joint_2" multiplier="-1"/>
@@ -97,7 +111,7 @@
     </link>
 
     <joint name="${prefix}joint_3" type="revolute">
-    <origin xyz="0.03 0.01 0" rpy="${-M_PI/2} 0 0"/> 
+    <origin xyz="0.03 0.01 0" rpy="${-M_PI/2} ${-M_PI/2} 0"/> 
       <parent link="${prefix}link_3"/>
       <child link="${prefix}link_4"/>
       <axis xyz="0 0 1"/>
@@ -127,7 +141,7 @@
   <!-- arm -->
   <link name="world"/>
   <xacro:uArm prefix="" parent="world">
-  <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
   </xacro:uArm>
 
 </robot>

@@ -6,10 +6,10 @@
 #define SERVO_RIGHT_PIN         12
 #define SERVO_HAND_ROT_PIN      10
 
-#define SERVO_ROT_ANALOG_PIN 		    2
-#define SERVO_LEFT_ANALOG_PIN 		  0
-#define SERVO_RIGHT_ANALOG_PIN 	  	1
-#define SERVO_HAND_ROT_ANALOG_PIN 	3
+#define SERVO_ROT_ANALOG_PIN        2
+#define SERVO_LEFT_ANALOG_PIN       0
+#define SERVO_RIGHT_ANALOG_PIN      1
+#define SERVO_HAND_ROT_ANALOG_PIN   3
 
 /*
 
@@ -63,21 +63,21 @@ void serialEvent() {
 
 void sort(unsigned int array[], unsigned int len)
 {
-	unsigned char i=0,j=0;
-	unsigned int temp = 0;
+  unsigned char i=0,j=0;
+  unsigned int temp = 0;
 
-	for(i = 0; i < len; i++) 
-	{
-		for(j = 0; i+j < (len-1); j++) 
-		{
-			if(array[j] > array[j+1]) 
-			{
-				temp = array[j];
-				array[j] = array[j+1];
-				array[j+1] = temp;
-			}
-		}
-	}	
+  for(i = 0; i < len; i++) 
+  {
+    for(j = 0; i+j < (len-1); j++) 
+    {
+      if(array[j] > array[j+1]) 
+      {
+        temp = array[j];
+        array[j] = array[j+1];
+        array[j+1] = temp;
+      }
+    }
+  } 
 }
 
 unsigned int getAnalogData(byte pin)
@@ -117,8 +117,8 @@ void loop() {
         memset(_speed, 0, sizeof(_speed));
       }
       
-      String sep = ",";
-      Serial.println(index[0] + sep + index[1] + sep + index[2]);
+      //String sep = ",";
+      //Serial.println(index[0] + sep + index[1] + sep + index[2]);
       
       _inputString = "";
       _newCommandComplete = false;
@@ -137,7 +137,7 @@ void loop() {
     _servos[3].writeMicroseconds(_servos[3].readMicroseconds() + _speed[3]);              // tell servo to go to position in variable 'pos'
     
     String sep = ",";
-    //Serial.println(angles[0] + sep + angles[1] + sep + angles[2] + sep + angles[3]);
+    Serial.println(angles[0] + sep + angles[1] + sep + angles[2] + sep + angles[3]);
     //Serial.println(_speed[0] + sep + _speed[1] + sep + _speed[2] + sep + _speed[3]);
     delay(1);
 }
